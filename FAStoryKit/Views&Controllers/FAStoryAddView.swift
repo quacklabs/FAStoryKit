@@ -33,7 +33,7 @@ final public class FAStoryAddView: UIViewController, SwipeDismissInteractible {
     // ==================================================== //
     public override func viewDidLoad() {
         super.viewDidLoad()
-//        _init()
+        _init()
 //        _configUI()
 //        _gradSetup()
         
@@ -46,6 +46,10 @@ final public class FAStoryAddView: UIViewController, SwipeDismissInteractible {
         if navigationController == nil {
             dismissInteractionController = SwipeInteractionController(viewController: self)
         }
+    }
+    
+    func _init() {
+        self.gestureView.backgroundColor = UIColor.white
     }
     
     

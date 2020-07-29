@@ -188,7 +188,8 @@ final public class FAStoryView: UIView {
     // -----------------------------------
     
     @objc func _addStoryClicked() {
-        self.delegate?.addStoryClicked()
+//        Dispatch
+        delegate?.addStoryClicked()
     }
 }
 
