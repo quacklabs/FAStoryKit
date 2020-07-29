@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		250D0A9424D19F0A00D7EFCA /* FAStoryAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250D0A9324D19F0A00D7EFCA /* FAStoryAddView.swift */; };
+		250D0A9624D1A68200D7EFCA /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250D0A9524D1A68200D7EFCA /* Codable+Extensions.swift */; };
 		50A3DE5422E0835400E58FBE /* FAStoryKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 50A3DE5222E0835400E58FBE /* FAStoryKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		50A3DE7D22E0837D00E58FBE /* _Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3DE5C22E0837C00E58FBE /* _Double.swift */; };
 		50A3DE7E22E0837D00E58FBE /* _String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3DE5D22E0837C00E58FBE /* _String.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		250D0A9324D19F0A00D7EFCA /* FAStoryAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAStoryAddView.swift; sourceTree = "<group>"; };
+		250D0A9524D1A68200D7EFCA /* Codable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
 		299619B30DFA4BB3048322C8 /* Pods-FAStoryKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FAStoryKit.debug.xcconfig"; path = "Target Support Files/Pods-FAStoryKit/Pods-FAStoryKit.debug.xcconfig"; sourceTree = "<group>"; };
 		50A3DE4F22E0835400E58FBE /* FAStoryKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FAStoryKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50A3DE5222E0835400E58FBE /* FAStoryKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FAStoryKit.h; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 			children = (
 				50A3DE5B22E0837C00E58FBE /* Internal */,
 				50A3DE5E22E0837C00E58FBE /* _FAStory.swift */,
+				250D0A9524D1A68200D7EFCA /* Codable+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 				50F20A362340EC5F0084A9B4 /* FAStoryContainerVC.swift */,
 				50A3DE7B22E0837D00E58FBE /* FAStoryVC.swift */,
 				50A3DE7C22E0837D00E58FBE /* FAStoryView.swift */,
+				250D0A9324D19F0A00D7EFCA /* FAStoryAddView.swift */,
 				50F20A3A2340ECF60084A9B4 /* CustomTransition */,
 				50A3DE7522E0837D00E58FBE /* Internal */,
 			);
@@ -397,12 +403,14 @@
 				50A3DE8922E0837D00E58FBE /* FAStoryController.swift in Sources */,
 				50A3DE8A22E0837D00E58FBE /* FAStoryContentTemplate.swift in Sources */,
 				50A3DE9022E0837D00E58FBE /* FAStoryCollectionViewCell.swift in Sources */,
+				250D0A9624D1A68200D7EFCA /* Codable+Extensions.swift in Sources */,
 				50F20A372340EC5F0084A9B4 /* FAStoryContainerVC.swift in Sources */,
 				50A3DE8822E0837D00E58FBE /* DefaultValues.swift in Sources */,
 				50F20A3E2340ECF60084A9B4 /* FAStoryContainer+TransitionCoordinator.swift in Sources */,
 				50A3DE8322E0837D00E58FBE /* FAStoryContentCacher.swift in Sources */,
 				50A3DE8022E0837D00E58FBE /* FAStoryTeller.swift in Sources */,
 				50A3DE7D22E0837D00E58FBE /* _Double.swift in Sources */,
+				250D0A9424D19F0A00D7EFCA /* FAStoryAddView.swift in Sources */,
 				50A3DE8F22E0837D00E58FBE /* StoryIndicatorView.swift in Sources */,
 				50A3DE8C22E0837D00E58FBE /* FAStoryVideoContent.swift in Sources */,
 				50A3DE8E22E0837D00E58FBE /* ExternalLinkControllerView.swift in Sources */,

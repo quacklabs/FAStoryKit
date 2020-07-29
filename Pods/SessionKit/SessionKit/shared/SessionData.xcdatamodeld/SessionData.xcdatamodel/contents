@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G87" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DKCategory" representedClassName="DKCategory" syncable="YES">
+        <attribute name="categoryExpression" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
+        <attribute name="categoryName" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
+        <attribute name="hasNewMember" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Integer 16" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="imageAverageColor" optional="YES" attributeType="Transformable"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="isSpecial" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="rawImageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="wasUsedLatest" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <relationship name="sessions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DKSession" inverseName="parent" inverseEntity="DKSession"/>
+    </entity>
+    <entity name="DKPriveSession" representedClassName="DKPriveSession" parentEntity="DKSession" syncable="YES">
+        <attribute name="duration" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="isReleased" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="status" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="url" attributeType="String" defaultValueString="&quot;&quot;"/>
+    </entity>
+    <entity name="DKSession" representedClassName="DKSession" syncable="YES">
+        <attribute name="dispName" optional="YES" attributeType="String"/>
+        <attribute name="expressionLong" optional="YES" attributeType="String" defaultValueString="&quot;&quot;" spotlightIndexingEnabled="YES"/>
+        <attribute name="expressionShort" optional="YES" attributeType="String" defaultValueString="&quot;&quot;" spotlightIndexingEnabled="YES"/>
+        <attribute name="hasNewMember" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="isFavorite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isPremium" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String" defaultValueString="&quot;&quot;" spotlightIndexingEnabled="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DKCategory" inverseName="sessions" inverseEntity="DKCategory"/>
+        <relationship name="subVersion" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DKSubversion" inverseName="parent" inverseEntity="DKSubversion"/>
+    </entity>
+    <entity name="DKSessionTheme" representedClassName="DKSessionTheme" parentEntity="DKSession" syncable="YES">
+        <attribute name="displayName" attributeType="String" defaultValueString="&quot;&quot;"/>
+        <attribute name="imageName" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
+    </entity>
+    <entity name="DKSubversion" representedClassName="DKSubversion" syncable="YES">
+        <attribute name="durationRemote" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="isCompleted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isFixed" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isPremium" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String" defaultValueString="&quot;&quot;"/>
+        <attribute name="source" optional="YES" attributeType="String" defaultValueString="&quot;&quot;"/>
+        <relationship name="parent" maxCount="1" deletionRule="Nullify" destinationEntity="DKSession" inverseName="subVersion" inverseEntity="DKSession"/>
+    </entity>
+    <elements>
+        <element name="DKCategory" positionX="-295.2578125" positionY="-229.1171875" width="128" height="193"/>
+        <element name="DKPriveSession" positionX="-63.5" positionY="183.3125" width="128" height="105"/>
+        <element name="DKSession" positionX="-60.38671875" positionY="-140.0546875" width="128" height="193"/>
+        <element name="DKSessionTheme" positionX="-265.02734375" positionY="129.4140625" width="128" height="75"/>
+        <element name="DKSubversion" positionX="133.78125" positionY="43.99609375" width="128" height="165"/>
+    </elements>
+</model>

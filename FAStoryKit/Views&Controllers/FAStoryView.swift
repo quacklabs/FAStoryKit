@@ -20,6 +20,7 @@ final public class FAStoryView: UIView {
     @IBOutlet internal weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
     @IBOutlet internal weak var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet internal weak var addStoryButton: UIButton!
     
     // ==================================================== //
     // MARK: IBActions
@@ -147,6 +148,7 @@ final public class FAStoryView: UIView {
                                                selector: #selector(_storySeen(_:)),
                                                name: .storySeen,
                                                object: nil)
+        self.addStoryButton.addTarget(self, action: #selector(self._addStoryClicked), for: .touchUpInside)
     }
     
     
@@ -177,14 +179,17 @@ final public class FAStoryView: UIView {
     }
     
     /// story seen notirication selector
-    @objc
-    private func _storySeen(_ notification: Notification) {
+    @objc private func _storySeen(_ notification: Notification) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {return}
             self.collectionView?.reloadData()
         }
     }
     // -----------------------------------
+    
+    @objc func _addStoryClicked() {
+        self.delegate?.addStoryClicked()
+    }
 }
 
 //

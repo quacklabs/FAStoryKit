@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FAStoryView" customModule="FAStoryKit" customModuleProvider="target">
             <connections>
+                <outlet property="addStoryButton" destination="5Ba-Lo-f5P" id="wnc-RW-eVv"/>
                 <outlet property="collectionView" destination="yo3-TL-WTz" id="xey-Mx-ncl"/>
                 <outlet property="collectionViewFlowLayout" destination="xnA-Q0-Ugc" id="th3-Dv-sFi"/>
                 <outlet property="collectionViewHeight" destination="hf3-Fi-Ue8" id="txT-Co-8bh"/>
@@ -24,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yo3-TL-WTz">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                    <rect key="frame" x="80" y="0.0" width="334" height="100"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="hf3-Fi-Ue8"/>
@@ -40,16 +39,31 @@
                         <outlet property="delegate" destination="-1" id="TAq-XK-NCU"/>
                     </connections>
                 </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="5Ba-Lo-f5P">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="xWl-vO-7bN"/>
+                    </constraints>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-40"/>
+                    <inset key="imageEdgeInsets" minX="34" minY="-31" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Add a Story" image="plus" catalog="system"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="5Ba-Lo-f5P" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="6Nu-j4-HSy"/>
                 <constraint firstAttribute="trailing" secondItem="yo3-TL-WTz" secondAttribute="trailing" id="93U-6u-Cq2"/>
+                <constraint firstItem="5Ba-Lo-f5P" firstAttribute="top" secondItem="yo3-TL-WTz" secondAttribute="top" id="Ow6-3A-vzC"/>
                 <constraint firstAttribute="top" secondItem="yo3-TL-WTz" secondAttribute="top" id="XKu-A3-enY"/>
-                <constraint firstItem="yo3-TL-WTz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zAn-9t-TZQ"/>
+                <constraint firstItem="yo3-TL-WTz" firstAttribute="leading" secondItem="5Ba-Lo-f5P" secondAttribute="trailing" id="lKz-rJ-IYh"/>
+                <constraint firstItem="5Ba-Lo-f5P" firstAttribute="bottom" secondItem="yo3-TL-WTz" secondAttribute="bottom" id="oHc-Zf-IMh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="47.826086956521742" y="27.455357142857142"/>
         </view>
     </objects>
+    <resources>
+        <image name="plus" catalog="system" width="64" height="56"/>
+    </resources>
 </document>

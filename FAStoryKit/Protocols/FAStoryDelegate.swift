@@ -37,7 +37,9 @@ public protocol FAStoryDelegate: class {
     func verticalCellPadding() -> CGFloat
     
     /// did select
-    func didSelect(row: Int) -> Void 
+    func didSelect(row: Int) -> Void
+    
+    func addStoryClicked() -> Void
     
 }
 
