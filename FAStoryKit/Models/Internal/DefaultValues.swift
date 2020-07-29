@@ -9,6 +9,8 @@
 import UIKit
 
 internal class DefaultValues: FAStoryDelegate {
+    func addStoryClicked() { }
+    
     
     /// internally shared singleton
     static var shared = DefaultValues()

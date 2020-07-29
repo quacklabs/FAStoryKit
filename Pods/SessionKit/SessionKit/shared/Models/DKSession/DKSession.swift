@@ -277,7 +277,7 @@ public extension DKSession {
 
 
 public extension DKSession {
-    override open var description: String {
+    override var description: String {
         return """
         Name: \(self.name)
         Premium: \(String(describing: self.isPremium))
