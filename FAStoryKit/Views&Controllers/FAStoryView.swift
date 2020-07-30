@@ -166,19 +166,18 @@ final public class FAStoryView: UIView {
         bundle.loadNibNamed("FAStoryView", owner: self, options: nil)
 
         addSubview(storyView)
+        
+        storyView.addSubview(addStoryButton)
 
         storyView.frame = bounds
         storyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        addStoryButton.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(addStoryButton)
-        
-        NSLayoutConstraint.activate([
-            addStoryButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            addStoryButton.bottomAnchor.constraint(equalTo: storyView.bottomAnchor),
-            addStoryButton.widthAnchor.constraint(equalToConstant: 80),
-            storyView.leadingAnchor.constraint(equalTo: addStoryButton.trailingAnchor)
-        ])
+            NSLayoutConstraint.activate([
+                addStoryButton.leadingAnchor.constraint(equalTo: storyView.leadingAnchor),
+                addStoryButton.bottomAnchor.constraint(equalTo: storyView.bottomAnchor),
+                addStoryButton.widthAnchor.constraint(equalToConstant: 80),
+                collectionView.leadingAnchor.constraint(equalTo: addStoryButton.trailingAnchor)
+            ])
         
         if #available(iOS 11.0, *) {
             addStoryButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -187,18 +186,9 @@ final public class FAStoryView: UIView {
             // Fallback on earlier versions
             addStoryButton.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         }
-        // load the nib file
-//        let bundle = Bundle(for: FAStoryView.self)
-//
-//        bundle.loadNibNamed("FAStoryView", owner: self, options: nil)
-//
-//        addSubview(storyView)
-//
-//        storyView.frame = bounds
-//        storyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//
+        
         _cvSetup()
-//
+
         /// subciribe to the story seen notification
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(_storySeen(_:)),

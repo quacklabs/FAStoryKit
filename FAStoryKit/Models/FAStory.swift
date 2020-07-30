@@ -147,16 +147,16 @@ public class FAStory: NSObject, FAStoryTeller, Decodable {
     /// - parameter content: Any object that conforms to __FAStoryAddible__
     /// - parameter name: Name of the story object
     /// - parameter flag: True if the content is builtIn False if otherwise
-//    public init(with content: FAStoryAddible, name: String, builtIn flag: Bool = true, preview image: UIImage? = nil, ident: String) {
-//        self.name = name
-//        self.content = [content]
-//        self.contentNature = flag ? .builtIn : .online
-//        self.ident = ident
-//        self.previewImageURL = (image
-//        //
-//        super.init()
-//        //
-//    }
+    public init(with content: FAStoryAddible, name: String, builtIn flag: Bool = true, preview image: UIImage? = nil, ident: String) {
+        self.name = name
+        self.content = [content]
+        self.contentNature = flag ? .builtIn : .online
+        self.ident = ident
+//        self.previewImageURL = 
+        //
+        super.init()
+        //
+    }
     
     /// Convenience initializer
     ///

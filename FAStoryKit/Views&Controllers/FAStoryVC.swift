@@ -355,7 +355,7 @@ final public class FAStoryViewController: UIViewController, StoryControllerDeleg
     private func _configUI() {
         guard story != nil else {return}
        
-        imgViewPreview.image = UIImage(data: story.previewImage!)
+//        imgViewPreview.image = (story.previewImage != nil) ? UIImage(data: story.previewImage!) : UIImage()
         lblTitle.text = story.name
         
         // indicators
