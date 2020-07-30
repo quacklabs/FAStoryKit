@@ -26,6 +26,12 @@ final public class FAStoryAddView: UIViewController, SwipeDismissInteractible {
         return view
     }
     
+    lazy var composeView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     var delegate: FAStoryAddDelegate?
     
     // ==================================================== //
@@ -34,7 +40,7 @@ final public class FAStoryAddView: UIViewController, SwipeDismissInteractible {
     public override func viewDidLoad() {
         super.viewDidLoad()
         _init()
-//        _configUI()
+        _configUI()
 //        _gradSetup()
         
         //
@@ -49,7 +55,12 @@ final public class FAStoryAddView: UIViewController, SwipeDismissInteractible {
     }
     
     func _init() {
-        self.gestureView.backgroundColor = UIColor.white
+        self.gestureView.backgroundColor = UIColor.black
+        self.view.addSubview(self.composeView)
+    }
+    
+    func _configUI() {
+        
     }
     
     

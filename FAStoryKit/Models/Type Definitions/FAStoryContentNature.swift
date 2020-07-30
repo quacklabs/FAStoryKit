@@ -12,7 +12,7 @@ import Foundation
 /// a built in one or a dynamic one that needs to be
 /// streamed from an external resource
 
-public enum FAStoryContentNature: Int {
+public enum FAStoryContentNature: Int, Codable {
     case builtIn = 0
     case online = 1 
 }

@@ -16,12 +16,12 @@ public protocol FAStoryTeller {
     var name: String! {get set}
     
     /// preview image to be displayed
-    var previewImage: UIImage! {get set}
+    var previewImage: Data? {get set}
     
     /// content that's included under the story
     var content: [FAStoryAddible]? {get set}
     
     /// nature of the content - whether the content is built in or online
-    var contentNature: FAStoryContentNature {get set}
+    var contentNature: FAStoryContentNature? {get set}
     
 }

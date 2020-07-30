@@ -11,7 +11,7 @@ import UIKit
 final public class FAStoryView: UIView {
 
     // ==================================================== //
-    // MARK: IBOutlets
+    // MARK: UI Components
     // ==================================================== //
     @IBOutlet internal var storyView: UIView!
     
@@ -20,16 +20,37 @@ final public class FAStoryView: UIView {
     @IBOutlet internal weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
     @IBOutlet internal weak var collectionViewHeight: NSLayoutConstraint!
-    @IBOutlet internal weak var addStoryButton: UIButton!
     
-    // ==================================================== //
-    // MARK: IBActions
-    // ==================================================== //
+    lazy var addStoryButton: UIButton = {
+        return addNewStoryButton()
+    }()
     
     
     // ==================================================== //
     // MARK: Properties
     // ==================================================== //
+    
+    var addButtonImage: UIImage? = UIImage(named: "ic_plus") {
+        didSet {
+            self.addStoryButton.setImage(addButtonImage, for: .normal)
+            self.addStoryButton.layoutIfNeeded()
+        }
+    }
+    
+    var addButtonText: String = "Add a story" {
+        didSet {
+            self.addStoryButton.setTitle(addButtonText, for: .normal)
+            self.addStoryButton.layoutIfNeeded()
+        }
+    }
+    
+    var _font: UIFont? {
+        didSet {
+            self.addStoryButton.titleLabel?.font = _font!
+            self.addStoryButton.setNeedsDisplay()
+            self.addStoryButton.layoutIfNeeded()
+        }
+    }
     
     // -----------------------------------
     // Public properties
@@ -75,12 +96,12 @@ final public class FAStoryView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         _setupUI()
     }
-    
+
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         // initializing via storyboard
         // set the auto resizing mask
-        translatesAutoresizingMaskIntoConstraints = true 
+        translatesAutoresizingMaskIntoConstraints = true
         _setupUI()
     }
     
@@ -102,6 +123,35 @@ final public class FAStoryView: UIView {
     // ==================================================== //
     // MARK: Methods
     // ==================================================== //
+    
+    func addNewStoryButton() -> UIButton {
+        let addView = UIButton(type: .custom)
+        addView.backgroundColor = .white
+        addView.translatesAutoresizingMaskIntoConstraints = false
+//        addView.
+        
+//        let btn = UIButton()
+//        btn.layer.cornerRadius = 25
+//        btn.layer.borderWidth = 1
+//        btn.layer.borderColor = Colors.green.cgColor
+////        btn.willSetContraints()
+//        btn.setImage(UIImage(named: "ic_add")?.resize(to: CGSize(width: 25, height: 25)), for: .normal)
+        
+//        let text = Text(font: Font.body.make(withSize: 12), content: Localization.add_a_atory.attributed)
+//        text.willSetContraints()
+//        addView.addSubviews([btn, text])
+        
+//        NSLayoutConstraint.activate([
+//            btn.centerXAnchor.constraint(equalTo: addView.centerXAnchor),
+//            btn.topAnchor.constraint(equalTo: addView.topAnchor, constant: 5),
+//            btn.heightAnchor.constraint(equalToConstant: 50),
+//            btn.widthAnchor.constraint(equalToConstant: 50),
+//
+//            text.centerXAnchor.constraint(equalTo: addView.centerXAnchor),
+//            text.topAnchor.constraint(equalTo: btn.bottomAnchor, constant: 5),
+//        ])
+        return addView
+    }
     
     // -----------------------------------
     // Public methods
@@ -131,18 +181,32 @@ final public class FAStoryView: UIView {
     // Private methods
     // -----------------------------------
     private func _setupUI() {
+//        self.addsub
+        NSLayoutConstraint.activate([
+            addStoryButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            addStoryButton.heightAnchor.constraint(equalToConstant: 80),
+            addStoryButton.widthAnchor.constraint(equalToConstant: 80),
+        ])
+        
+        if #available(iOS 11.0, *) {
+            addStoryButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
+            
+        } else {
+            // Fallback on earlier versions
+            addStoryButton.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        }
         // load the nib file
-        let bundle = Bundle(for: FAStoryView.self)
-        
-        bundle.loadNibNamed("FAStoryView", owner: self, options: nil)
-        
-        addSubview(storyView)
-        
-        storyView.frame = bounds
-        storyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        _cvSetup()
-        
+//        let bundle = Bundle(for: FAStoryView.self)
+//
+//        bundle.loadNibNamed("FAStoryView", owner: self, options: nil)
+//
+//        addSubview(storyView)
+//
+//        storyView.frame = bounds
+//        storyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//
+//        _cvSetup()
+//
         /// subciribe to the story seen notification
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(_storySeen(_:)),
@@ -227,7 +291,7 @@ extension FAStoryView: UICollectionViewDataSource {
         cell.storyIdent = stories![indexPath.row].ident
         
         if let image = stories?[indexPath.row].previewImage {
-            cell.setImage(image)
+            cell.setImage(UIImage(data: image)!)
         }
         
         return cell
