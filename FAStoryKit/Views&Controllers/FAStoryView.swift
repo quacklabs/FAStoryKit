@@ -30,21 +30,21 @@ final public class FAStoryView: UIView {
     // MARK: Properties
     // ==================================================== //
     
-    var addButtonImage: UIImage? = UIImage(named: "ic_plus") {
-        didSet {
-            self.addStoryButton.setImage(addButtonImage, for: .normal)
-            self.addStoryButton.layoutIfNeeded()
-        }
-    }
+//    var addButtonImage: UIImage? = UIImage(named: "ic_plus") {
+//        didSet {
+//            self.addStoryButton.setImage(addButtonImage, for: .normal)
+//            self.addStoryButton.layoutIfNeeded()
+//        }
+//    }
+//    
+//    var addButtonText: String = "Add a story" {
+//        didSet {
+//            self.addStoryButton.setTitle(addButtonText, for: .normal)
+//            self.addStoryButton.layoutIfNeeded()
+//        }
+//    }
     
-    var addButtonText: String = "Add a story" {
-        didSet {
-            self.addStoryButton.setTitle(addButtonText, for: .normal)
-            self.addStoryButton.layoutIfNeeded()
-        }
-    }
-    
-    var _font: UIFont? {
+    public var _font: UIFont? {
         didSet {
             self.addStoryButton.titleLabel?.font = _font!
             self.addStoryButton.setNeedsDisplay()
