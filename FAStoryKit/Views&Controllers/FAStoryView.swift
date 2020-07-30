@@ -159,15 +159,23 @@ final public class FAStoryView: UIView {
     // Private methods
     // -----------------------------------
     private func _setupUI() {
-//        self.addsub
-        addSubview(storyView)
-        addSubview(addStoryButton)
         
+        // load the nib file
+        let bundle = Bundle(for: FAStoryView.self)
+
+        bundle.loadNibNamed("FAStoryView", owner: self, options: nil)
+
+        addSubview(storyView)
+
+        storyView.frame = bounds
         storyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        addStoryButton.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(addStoryButton)
         
         NSLayoutConstraint.activate([
             addStoryButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            addStoryButton.heightAnchor.constraint(equalToConstant: 80),
+            addStoryButton.bottomAnchor.constraint(equalTo: storyView.bottomAnchor),
             addStoryButton.widthAnchor.constraint(equalToConstant: 80),
             storyView.leadingAnchor.constraint(equalTo: addStoryButton.trailingAnchor)
         ])
