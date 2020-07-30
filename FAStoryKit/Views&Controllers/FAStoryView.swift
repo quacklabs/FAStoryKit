@@ -36,7 +36,7 @@ final public class FAStoryView: UIView {
 //            self.addStoryButton.layoutIfNeeded()
 //        }
 //    }
-//    
+//
 //    var addButtonText: String = "Add a story" {
 //        didSet {
 //            self.addStoryButton.setTitle(addButtonText, for: .normal)
@@ -128,28 +128,6 @@ final public class FAStoryView: UIView {
         let addView = UIButton(type: .custom)
         addView.backgroundColor = .white
         addView.translatesAutoresizingMaskIntoConstraints = false
-//        addView.
-        
-//        let btn = UIButton()
-//        btn.layer.cornerRadius = 25
-//        btn.layer.borderWidth = 1
-//        btn.layer.borderColor = Colors.green.cgColor
-////        btn.willSetContraints()
-//        btn.setImage(UIImage(named: "ic_add")?.resize(to: CGSize(width: 25, height: 25)), for: .normal)
-        
-//        let text = Text(font: Font.body.make(withSize: 12), content: Localization.add_a_atory.attributed)
-//        text.willSetContraints()
-//        addView.addSubviews([btn, text])
-        
-//        NSLayoutConstraint.activate([
-//            btn.centerXAnchor.constraint(equalTo: addView.centerXAnchor),
-//            btn.topAnchor.constraint(equalTo: addView.topAnchor, constant: 5),
-//            btn.heightAnchor.constraint(equalToConstant: 50),
-//            btn.widthAnchor.constraint(equalToConstant: 50),
-//
-//            text.centerXAnchor.constraint(equalTo: addView.centerXAnchor),
-//            text.topAnchor.constraint(equalTo: btn.bottomAnchor, constant: 5),
-//        ])
         return addView
     }
     
@@ -182,10 +160,16 @@ final public class FAStoryView: UIView {
     // -----------------------------------
     private func _setupUI() {
 //        self.addsub
+        addSubview(storyView)
+        addSubview(addStoryButton)
+        
+        storyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
         NSLayoutConstraint.activate([
             addStoryButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             addStoryButton.heightAnchor.constraint(equalToConstant: 80),
             addStoryButton.widthAnchor.constraint(equalToConstant: 80),
+            storyView.leadingAnchor.constraint(equalTo: addStoryButton.trailingAnchor)
         ])
         
         if #available(iOS 11.0, *) {
@@ -205,7 +189,7 @@ final public class FAStoryView: UIView {
 //        storyView.frame = bounds
 //        storyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 //
-//        _cvSetup()
+        _cvSetup()
 //
         /// subciribe to the story seen notification
         NotificationCenter.default.addObserver(self,
