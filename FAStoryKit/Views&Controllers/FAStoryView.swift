@@ -21,7 +21,7 @@ final public class FAStoryView: UIView {
     
     @IBOutlet internal weak var collectionViewHeight: NSLayoutConstraint!
     
-    lazy var addStoryButton: UIButton = {
+    lazy public var addStoryButton: UIButton = {
         return addNewStoryButton()
     }()
     
