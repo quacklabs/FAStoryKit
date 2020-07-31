@@ -32,6 +32,10 @@ extension KeyedEncodingContainer {
         try encode(imageData, forKey: key)
     }
     
+//    mutating func encode(_ value: Timer, forKey key: KeyedEncodingContainer.Key) {
+//        var timer: Timer
+//    }
+    
 }
 
 extension KeyedDecodingContainer {

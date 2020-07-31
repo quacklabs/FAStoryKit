@@ -10,10 +10,8 @@ import UIKit
 
 
 /// Main story container object
-public class FAStory: NSObject, FAStoryTeller, Decodable {
-    
-    
-    
+
+final public class FAStory: NSObject, FAStoryTeller, Decodable {
     // ==================================================== //
     // MARK: Properties
     // ==================================================== //
@@ -25,19 +23,17 @@ public class FAStory: NSObject, FAStoryTeller, Decodable {
     public var name: String!
     
     /// Story previewImage as seen on the highlights
-    public var previewImageURL: String?
-    
-    public var previewImage: Data?
+    public var previewImage: UIImage?
     
     /// Content(s) of the story
-    public var content: [FAStoryAddible]?
+    public var content: [FAStoryAddible]
     
     /// Nature of the content
     ///
     /// .builtIn || .online
-    public var contentNature: FAStoryContentNature?
+    public var contentNature: FAStoryContentNature
     
-    /// id of the story if present
+    /// ident of the story
     public var ident: String
     
     /// flag that returns if th story has been watched before
@@ -66,9 +62,9 @@ public class FAStory: NSObject, FAStoryTeller, Decodable {
     ///
     /// - previewImage: Preview image key name
     /// - content: Content key name
-    private enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case name
-        case previewImageURL = "previewAsset"
+        case previewImage = "previewAsset"
         case content = "contents"
         case contentNature
         case ident
@@ -88,15 +84,14 @@ public class FAStory: NSObject, FAStoryTeller, Decodable {
     
     /// Initializer for the Decodable protocol
     ///
-    required public init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        
         let nature = try values.decode(Int.self, forKey: .contentNature)
+//        let imageName = try values.decode(String.self, forKey: .previewImage)
         let ident = try values.decodeIfPresent(String.self, forKey: .ident) ?? UUID().uuidString
-        
+        contentNature = FAStoryContentNature(rawValue: nature) ?? .builtIn
         name = try values.decode(String.self, forKey: .name)
-        contentNature = FAStoryContentNature(rawValue: nature)
-        self.previewImageURL = try values.decode(String.self, forKey: .previewImageURL)
+//        previewImage = UIImage(named: imageName)
         self.ident = ident
         
         super.init()
@@ -129,11 +124,11 @@ public class FAStory: NSObject, FAStoryTeller, Decodable {
             switch contentType {
             case .image:
                 let _content = FAStoryImageContent(assetURL: assetUrl, externUrl: externalUrl, duration: duration)
-                _content.setContentNature(self.contentNature!)
+                _content.setContentNature(self.contentNature)
                 self.addContent(_content)
             case .video:
                 let _content = FAStoryVideoContent(assetURL: assetUrl, externUrl: externalUrl, duration: duration)
-                _content.setContentNature(self.contentNature!)
+                _content.setContentNature(self.contentNature)
                 self.addContent(_content)
             default:
                 assert(false, "FAStory - Invalid content type, please implement the corresponding type.")
@@ -147,24 +142,31 @@ public class FAStory: NSObject, FAStoryTeller, Decodable {
     /// - parameter content: Any object that conforms to __FAStoryAddible__
     /// - parameter name: Name of the story object
     /// - parameter flag: True if the content is builtIn False if otherwise
-    public init(with content: FAStoryAddible, name: String, builtIn flag: Bool = true, preview image: UIImage? = nil, ident: String) {
+    public init(with content: FAStoryAddible, name: String, builtIn flag: Bool = false, preview image: UIImage? = nil, ident: String) {
         self.name = name
         self.content = [content]
         self.contentNature = flag ? .builtIn : .online
         self.ident = ident
-//        self.previewImageURL = 
         //
         super.init()
         //
     }
     
-    /// Convenience initializer
-    ///
-    /// The created story object nature will be __builtIn__
-    public override init() {
-        contentNature = .builtIn
-        ident = UUID().uuidString
-        super.init()
+//    /// Convenience initializer
+//    ///
+//    /// The created story object nature will be __builtIn__
+//    public override init() {
+//        contentNature = .builtIn
+//        ident = UUID().uuidString
+//        super.init()
+//    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try? container.encode(previewImage!, forKey: .previewImage, quality: .png)
+        try container.encode(name, forKey: .name)
+        try container.encode(contentNature, forKey: .contentNature)
+        try container.encode(ident, forKey: .ident)
     }
 
     
@@ -178,7 +180,7 @@ public class FAStory: NSObject, FAStoryTeller, Decodable {
     /// Method that adds a new content to this story
     public func addContent(_ content: FAStoryAddible) {
         if self.content != nil {
-            self.content!.append(content)
+            self.content.append(content)
         } else {
             self.content = [content]
         }
@@ -198,5 +200,4 @@ public class FAStory: NSObject, FAStoryTeller, Decodable {
     // -----------------------------------
     
     // -----------------------------------
-    
 }
