@@ -171,19 +171,19 @@ final public class FAStoryView: UIView {
 
         storyView.frame = bounds
         storyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
+        DispatchQueue.main.async {
             NSLayoutConstraint.activate([
-                addStoryButton.leadingAnchor.constraint(equalTo: storyView.leadingAnchor),
-                addStoryButton.bottomAnchor.constraint(equalTo: storyView.bottomAnchor),
-                addStoryButton.widthAnchor.constraint(equalToConstant: 80),
-                collectionView.leadingAnchor.constraint(equalTo: addStoryButton.trailingAnchor)
+                self.addStoryButton.leadingAnchor.constraint(equalTo: self.storyView.leadingAnchor),
+                self.addStoryButton.bottomAnchor.constraint(equalTo: self.storyView.bottomAnchor),
+                self.addStoryButton.widthAnchor.constraint(equalToConstant: 80),
+                self.collectionView.leadingAnchor.constraint(equalTo: self.addStoryButton.trailingAnchor)
             ])
-        
-        if #available(iOS 11.0, *) {
-            addStoryButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
-        } else {
-            // Fallback on earlier versions
-            addStoryButton.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            if #available(iOS 11.0, *) {
+                self.addStoryButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
+            } else {
+                // Fallback on earlier versions
+                self.addStoryButton.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            }
         }
         
         _cvSetup()
