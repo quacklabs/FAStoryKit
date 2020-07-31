@@ -30,6 +30,7 @@ public extension FAStory {
         
         switch self.contentNature {
         case .online:
+            
             break // TBA
         case .builtIn:
             let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
@@ -39,10 +40,7 @@ public extension FAStory {
             guard let image = try? Data(contentsOf: imageURL) else {
                 return
             }
-//            self.preview
-//            let fileURL = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!).URLByAppendingPathComponent(fileName)
-//            self.previewImage = Data(contentsOfUrl: preview)
-            self.previewImage = image
+            self.previewImage = UIImage(data: image)!
             break
         default:
             break
@@ -75,11 +73,11 @@ public extension FAStory {
             switch type {
             case .image:
                 let _content = FAStoryImageContent(assetURL: assetUrl, externUrl: externalUrl, duration: duration)
-                _content.setContentNature(self.contentNature!)
+                _content.setContentNature(self.contentNature)
                 self.addContent(_content)
             case .video:
                 let _content = FAStoryVideoContent(assetURL: assetUrl, externUrl: externalUrl, duration: duration)
-                _content.setContentNature(self.contentNature!)
+                _content.setContentNature(self.contentNature)
                 self.addContent(_content)
             default:
                 assert(false, "FAStory - Invalid content type, please implement the corresponding type.")

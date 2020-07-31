@@ -181,7 +181,6 @@ final public class FAStoryView: UIView {
         
         if #available(iOS 11.0, *) {
             addStoryButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
-            
         } else {
             // Fallback on earlier versions
             addStoryButton.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
@@ -273,7 +272,7 @@ extension FAStoryView: UICollectionViewDataSource {
         cell.storyIdent = stories![indexPath.row].ident
         
         if let image = stories?[indexPath.row].previewImage {
-            cell.setImage(UIImage(data: image)!)
+            cell.setImage(image)
         }
         
         return cell

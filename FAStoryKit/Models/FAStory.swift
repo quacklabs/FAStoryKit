@@ -12,6 +12,8 @@ import UIKit
 /// Main story container object
 
 final public class FAStory: NSObject, FAStoryTeller, Decodable {
+//    public var content: [FAStoryAddible]
+    
     // ==================================================== //
     // MARK: Properties
     // ==================================================== //
@@ -26,7 +28,7 @@ final public class FAStory: NSObject, FAStoryTeller, Decodable {
     public var previewImage: UIImage?
     
     /// Content(s) of the story
-    public var content: [FAStoryAddible]
+    public var content: [FAStoryAddible]?
     
     /// Nature of the content
     ///
@@ -87,11 +89,11 @@ final public class FAStory: NSObject, FAStoryTeller, Decodable {
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         let nature = try values.decode(Int.self, forKey: .contentNature)
-//        let imageName = try values.decode(String.self, forKey: .previewImage)
+        let imageName = try values.decode(String.self, forKey: .previewImage)
         let ident = try values.decodeIfPresent(String.self, forKey: .ident) ?? UUID().uuidString
         contentNature = FAStoryContentNature(rawValue: nature) ?? .builtIn
         name = try values.decode(String.self, forKey: .name)
-//        previewImage = UIImage(named: imageName)
+        
         self.ident = ident
         
         super.init()
@@ -152,14 +154,14 @@ final public class FAStory: NSObject, FAStoryTeller, Decodable {
         //
     }
     
-//    /// Convenience initializer
-//    ///
-//    /// The created story object nature will be __builtIn__
-//    public override init() {
-//        contentNature = .builtIn
-//        ident = UUID().uuidString
-//        super.init()
-//    }
+    /// Convenience initializer
+    ///
+    /// The created story object nature will be __builtIn__
+    public override init() {
+        contentNature = .builtIn
+        ident = UUID().uuidString
+        super.init()
+    }
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -180,7 +182,7 @@ final public class FAStory: NSObject, FAStoryTeller, Decodable {
     /// Method that adds a new content to this story
     public func addContent(_ content: FAStoryAddible) {
         if self.content != nil {
-            self.content.append(content)
+            self.content!.append(content)
         } else {
             self.content = [content]
         }

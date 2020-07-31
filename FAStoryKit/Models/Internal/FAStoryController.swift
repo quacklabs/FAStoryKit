@@ -131,13 +131,13 @@ internal class FAStoryController: NSObject, FAStoryContentDelegate {
     // ==================================================== //
     init(with story: FAStory) {
         self.story = story
-        self.contentCount = story.content.count ?? 0
-        self.currentContent = story.content.first
+        self.contentCount = story.content?.count ?? 0
+        self.currentContent = story.content?.first
         if let c = currentContent as? FAStoryVideoContent {
             c.contentConfigure()
         }
         super.init()
-        _ = _initContent(story.content.first)
+        _ = _initContent(story.content?.first)
         
     }
 
