@@ -13,13 +13,32 @@ final public class FAStoryView: UIView {
     // ==================================================== //
     // MARK: IBOutlets
     // ==================================================== //
-    @IBOutlet internal var storyView: UIView!
+    lazy private var storyView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        return view
+    }()
     
-    @IBOutlet internal weak var collectionView: UICollectionView! 
+    lazy public var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 10
+        layout.itemSize = CGSize(width: 80, height: 100)
+        
+        let col = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        col.translatesAutoresizingMaskIntoConstraints = false
+        col.clipsToBounds = true
+        return col
+    }()
+        
+    lazy public var addStoryButton: ButtonView! = {
+        let btn = ButtonView()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.clipsToBounds = true
+        return btn
+    }()
     
-    @IBOutlet internal weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
-    
-    @IBOutlet internal weak var collectionViewHeight: NSLayoutConstraint!
     
     // ==================================================== //
     // MARK: IBActions
@@ -43,18 +62,19 @@ final public class FAStoryView: UIView {
             DispatchQueue.main.async {
                 self.stories = self.dataSource?.stories()
                 FAStoryVcStack.shared.stories = self.stories
-                guard let cv = self.collectionView else {return}
+                let cv = self.collectionView // else {return}
                 cv.reloadData()
             }
         }
     }
     
     /// FAStoryDelegate
-    public weak var delegate: FAStoryDelegate? {
-        didSet {
-            collectionViewHeight?.constant = (delegate?.cellHeight ?? DefaultValues.shared.cellHeight)
-        }
-    }
+    public weak var delegate: FAStoryDelegate?
+//    {
+//        didSet {
+//            collectionViewHeight?.constant = (delegate?.cellHeight ?? DefaultValues.shared.cellHeight)
+//        }
+//    }
     // -----------------------------------
     
     
@@ -86,15 +106,10 @@ final public class FAStoryView: UIView {
     // ==================================================== //
     // MARK: View lifecycle
     // ==================================================== //
-    public override func awakeFromNib() {
-        super.awakeFromNib()
-        autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    }
-    
     
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        collectionView?.reloadData()
+        collectionView.reloadData()
     }
     
     
@@ -105,23 +120,28 @@ final public class FAStoryView: UIView {
     // -----------------------------------
     // Public methods
     // -----------------------------------
+    
+    public func reload() {
+        self.collectionView.reloadData()
+    }
+    
     /// hides the scroll indicators
     public func setScrollIndicators(hidden: Bool) {
-        collectionView?.showsVerticalScrollIndicator = !hidden
-        collectionView?.showsHorizontalScrollIndicator = !hidden
+        collectionView.showsVerticalScrollIndicator = !hidden
+        collectionView.showsHorizontalScrollIndicator = !hidden
     }
     
     /// Sets the insets for the collectionView
     ///
     /// - Parameter insets: Insets to be set
     public func setContentInset(insets: UIEdgeInsets) {
-        collectionView?.contentInset = insets
+        collectionView.contentInset = insets
     }
     
     /// Let or block the bouncinf movement of the story container view
     /// - Parameter bounces: Pass __true__ to bounce
     public func setBouncesOnScroll(_ bounces: Bool) {
-        collectionView?.alwaysBounceHorizontal = bounces
+        collectionView.alwaysBounceHorizontal = bounces
     }
     // -----------------------------------
     
@@ -130,23 +150,36 @@ final public class FAStoryView: UIView {
     // Private methods
     // -----------------------------------
     private func _setupUI() {
-        // load the nib file
-        let bundle = Bundle(for: FAStoryView.self)
         
-        bundle.loadNibNamed("FAStoryView", owner: self, options: nil)
+        _cvSetup()
+        
+        storyView.addSubview(self.addStoryButton)
+        storyView.addSubview(self.collectionView)
         
         addSubview(storyView)
         
-        storyView.frame = bounds
-        storyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        _cvSetup()
+        NSLayoutConstraint.activate([
+            storyView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            storyView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            storyView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            storyView.topAnchor.constraint(equalTo: self.topAnchor),
+            
+            addStoryButton.topAnchor.constraint(equalTo: storyView.topAnchor),
+            addStoryButton.leadingAnchor.constraint(equalTo: storyView.leadingAnchor),
+            addStoryButton.bottomAnchor.constraint(equalTo: storyView.bottomAnchor),
+            addStoryButton.widthAnchor.constraint(equalToConstant: 80),
+            collectionView.leadingAnchor.constraint(equalTo: addStoryButton.trailingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: storyView.trailingAnchor),
+            collectionView.topAnchor.constraint(equalTo: storyView.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: storyView.bottomAnchor)
+        ])
         
         /// subciribe to the story seen notification
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(_storySeen(_:)),
                                                name: .storySeen,
                                                object: nil)
+//        self.addStoryButton.delegate = self
     }
     
     
@@ -168,6 +201,8 @@ final public class FAStoryView: UIView {
         collectionView.delaysContentTouches = false
         
         collectionView.backgroundColor = .clear
+        collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
     /// calculates the cell size based on the current configuration
@@ -181,7 +216,7 @@ final public class FAStoryView: UIView {
     private func _storySeen(_ notification: Notification) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {return}
-            self.collectionView?.reloadData()
+            self.collectionView.reloadData()
         }
     }
     // -----------------------------------
@@ -222,6 +257,7 @@ extension FAStoryView: UICollectionViewDataSource {
         
         if let image = stories?[indexPath.row].previewImage {
             cell.setImage(image)
+            cell.setBorder(width: 2, color: .black)
         }
         
         return cell

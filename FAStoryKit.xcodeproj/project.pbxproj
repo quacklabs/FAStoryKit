@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25B3DB3724DADA04002C2EA3 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B3DB3624DADA04002C2EA3 /* ButtonView.swift */; };
+		25B3DB3F24DB005C002C2EA3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B3DB3E24DB005C002C2EA3 /* Colors.swift */; };
+		25B3DB4124DB0C16002C2EA3 /* StoryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B3DB4024DB0C16002C2EA3 /* StoryAddViewController.swift */; };
 		50A3DE5422E0835400E58FBE /* FAStoryKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 50A3DE5222E0835400E58FBE /* FAStoryKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		50A3DE7D22E0837D00E58FBE /* _Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3DE5C22E0837C00E58FBE /* _Double.swift */; };
 		50A3DE7E22E0837D00E58FBE /* _String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3DE5D22E0837C00E58FBE /* _String.swift */; };
@@ -24,7 +27,6 @@
 		50A3DE8A22E0837D00E58FBE /* FAStoryContentTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3DE6E22E0837D00E58FBE /* FAStoryContentTemplate.swift */; };
 		50A3DE8B22E0837D00E58FBE /* FAStoryImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3DE7022E0837D00E58FBE /* FAStoryImageContent.swift */; };
 		50A3DE8C22E0837D00E58FBE /* FAStoryVideoContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3DE7122E0837D00E58FBE /* FAStoryVideoContent.swift */; };
-		50A3DE8D22E0837D00E58FBE /* FAStoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50A3DE7322E0837D00E58FBE /* FAStoryView.xib */; };
 		50A3DE8E22E0837D00E58FBE /* ExternalLinkControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3DE7622E0837D00E58FBE /* ExternalLinkControllerView.swift */; };
 		50A3DE8F22E0837D00E58FBE /* StoryIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3DE7722E0837D00E58FBE /* StoryIndicatorView.swift */; };
 		50A3DE9022E0837D00E58FBE /* FAStoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3DE7822E0837D00E58FBE /* FAStoryCollectionViewCell.swift */; };
@@ -44,6 +46,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25B3DB3624DADA04002C2EA3 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		25B3DB3E24DB005C002C2EA3 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		25B3DB4024DB0C16002C2EA3 /* StoryAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryAddViewController.swift; sourceTree = "<group>"; };
 		299619B30DFA4BB3048322C8 /* Pods-FAStoryKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FAStoryKit.debug.xcconfig"; path = "Target Support Files/Pods-FAStoryKit/Pods-FAStoryKit.debug.xcconfig"; sourceTree = "<group>"; };
 		50A3DE4F22E0835400E58FBE /* FAStoryKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FAStoryKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50A3DE5222E0835400E58FBE /* FAStoryKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FAStoryKit.h; sourceTree = "<group>"; };
@@ -64,7 +69,6 @@
 		50A3DE6E22E0837D00E58FBE /* FAStoryContentTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAStoryContentTemplate.swift; sourceTree = "<group>"; };
 		50A3DE7022E0837D00E58FBE /* FAStoryImageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAStoryImageContent.swift; sourceTree = "<group>"; };
 		50A3DE7122E0837D00E58FBE /* FAStoryVideoContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAStoryVideoContent.swift; sourceTree = "<group>"; };
-		50A3DE7322E0837D00E58FBE /* FAStoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAStoryView.xib; sourceTree = "<group>"; };
 		50A3DE7622E0837D00E58FBE /* ExternalLinkControllerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalLinkControllerView.swift; sourceTree = "<group>"; };
 		50A3DE7722E0837D00E58FBE /* StoryIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryIndicatorView.swift; sourceTree = "<group>"; };
 		50A3DE7822E0837D00E58FBE /* FAStoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAStoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -97,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25B3DB3524DAD9E7002C2EA3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				25B3DB3624DADA04002C2EA3 /* ButtonView.swift */,
+				25B3DB3E24DB005C002C2EA3 /* Colors.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		50A3DE4522E0835400E58FBE = {
 			isa = PBXGroup;
 			children = (
@@ -121,9 +134,9 @@
 			children = (
 				50A3DE5322E0835400E58FBE /* Info.plist */,
 				50A3DE5222E0835400E58FBE /* FAStoryKit.h */,
+				25B3DB3524DAD9E7002C2EA3 /* Views */,
 				50A3DE5A22E0837C00E58FBE /* Extensions */,
 				50A3DE6522E0837D00E58FBE /* Models */,
-				50A3DE7222E0837D00E58FBE /* NibFiles */,
 				50A3DE5F22E0837D00E58FBE /* Protocols */,
 				50A3DE7422E0837D00E58FBE /* Views&Controllers */,
 			);
@@ -212,20 +225,13 @@
 			path = SupportedContents;
 			sourceTree = "<group>";
 		};
-		50A3DE7222E0837D00E58FBE /* NibFiles */ = {
-			isa = PBXGroup;
-			children = (
-				50A3DE7322E0837D00E58FBE /* FAStoryView.xib */,
-			);
-			path = NibFiles;
-			sourceTree = "<group>";
-		};
 		50A3DE7422E0837D00E58FBE /* Views&Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				50F20A362340EC5F0084A9B4 /* FAStoryContainerVC.swift */,
 				50A3DE7B22E0837D00E58FBE /* FAStoryVC.swift */,
 				50A3DE7C22E0837D00E58FBE /* FAStoryView.swift */,
+				25B3DB4024DB0C16002C2EA3 /* StoryAddViewController.swift */,
 				50F20A3A2340ECF60084A9B4 /* CustomTransition */,
 				50A3DE7522E0837D00E58FBE /* Internal */,
 			);
@@ -340,7 +346,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50A3DE8D22E0837D00E58FBE /* FAStoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +383,8 @@
 			files = (
 				50A3DE9122E0837D00E58FBE /* StoryIndicatorContainerView.swift in Sources */,
 				50A3DE7E22E0837D00E58FBE /* _String.swift in Sources */,
+				25B3DB3724DADA04002C2EA3 /* ButtonView.swift in Sources */,
+				25B3DB3F24DB005C002C2EA3 /* Colors.swift in Sources */,
 				50F20A3D2340ECF60084A9B4 /* TransitionAnimator.swift in Sources */,
 				50F20A45234122450084A9B4 /* _NSNotification.swift in Sources */,
 				50F20A46234122450084A9B4 /* _UINavigationController.swift in Sources */,
@@ -386,6 +393,7 @@
 				50A3DE7F22E0837D00E58FBE /* _FAStory.swift in Sources */,
 				50A3DE9422E0837D00E58FBE /* FAStoryView.swift in Sources */,
 				50A3DE8222E0837D00E58FBE /* FAStoryAddible.swift in Sources */,
+				25B3DB4124DB0C16002C2EA3 /* StoryAddViewController.swift in Sources */,
 				50A3DE8B22E0837D00E58FBE /* FAStoryImageContent.swift in Sources */,
 				50F20A392340ECA40084A9B4 /* FAStoryVcStack.swift in Sources */,
 				50A3DE9322E0837D00E58FBE /* FAStoryVC.swift in Sources */,
