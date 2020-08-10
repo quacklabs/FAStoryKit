@@ -32,12 +32,12 @@ final public class FAStoryView: UIView {
         return col
     }()
         
-    lazy public var addStoryButton: ButtonView! = {
-        let btn = ButtonView()
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.clipsToBounds = true
-        return btn
-    }()
+//    lazy public var addStoryButton: ButtonView! = {
+//        let btn = ButtonView()
+//        btn.translatesAutoresizingMaskIntoConstraints = false
+//        btn.clipsToBounds = true
+//        return btn
+//    }()
     
     
     // ==================================================== //
@@ -153,7 +153,7 @@ final public class FAStoryView: UIView {
         
         _cvSetup()
         
-        storyView.addSubview(self.addStoryButton)
+//        storyView.addSubview(self.addStoryButton)
         storyView.addSubview(self.collectionView)
         
         addSubview(storyView)
@@ -164,11 +164,11 @@ final public class FAStoryView: UIView {
             storyView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             storyView.topAnchor.constraint(equalTo: self.topAnchor),
             
-            addStoryButton.topAnchor.constraint(equalTo: storyView.topAnchor),
-            addStoryButton.leadingAnchor.constraint(equalTo: storyView.leadingAnchor),
-            addStoryButton.bottomAnchor.constraint(equalTo: storyView.bottomAnchor),
-            addStoryButton.widthAnchor.constraint(equalToConstant: 80),
-            collectionView.leadingAnchor.constraint(equalTo: addStoryButton.trailingAnchor),
+//            addStoryButton.topAnchor.constraint(equalTo: storyView.topAnchor),
+//            addStoryButton.leadingAnchor.constraint(equalTo: storyView.leadingAnchor),
+//            addStoryButton.bottomAnchor.constraint(equalTo: storyView.bottomAnchor),
+//            addStoryButton.widthAnchor.constraint(equalToConstant: 80),
+            collectionView.leadingAnchor.constraint(equalTo: storyView.trailingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: storyView.trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: storyView.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: storyView.bottomAnchor)
@@ -200,7 +200,7 @@ final public class FAStoryView: UIView {
         //
         collectionView.delaysContentTouches = false
         
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = .white
         collectionView.dataSource = self
         collectionView.delegate = self
     }

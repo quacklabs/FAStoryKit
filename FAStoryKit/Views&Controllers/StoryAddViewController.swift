@@ -221,7 +221,6 @@ public class StoryAddViewController: UIViewController {
             guard let image = statusTextToImage() else {
                 return
             }
-            //            self.delegate?.storyAdded(story: )
         }
     }
     
@@ -230,6 +229,7 @@ public class StoryAddViewController: UIViewController {
             
             self.composeView.backgroundColor = Colors.custom != nil ? Colors.custom?.randomElement() : Colors.all.randomElement()
             self.view.backgroundColor = self.composeView.backgroundColor
+            self.view.layoutIfNeeded()
         }
     }
     

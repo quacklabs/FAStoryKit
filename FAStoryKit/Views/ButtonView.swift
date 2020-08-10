@@ -8,35 +8,22 @@
 
 import UIKit
 
-open class ButtonView: UIView {
+public class ButtonView: UIView {
     var imageView: UIImageView!
     var textView: UILabel!
     
     //    internal var clicked: (() -> Void)?
-    public var delegate: FAStoryDelegate?
+    public var clicked: (() -> Void)?
     
-    public var image: UIImage? {
-        didSet {
-            _setupUI()
-        }
-    }
-    public var text: NSMutableAttributedString? {
-        didSet {
-            _setupUI()
-        }
-    }
-    
-    public var font: UIFont? {
-        didSet {
-            _setupUI()
-        }
-    }
-    
-    public var tint: UIColor? {
-        didSet {
-            _setupUI()
-        }
-    }
+//    public var customView: UIView {
+//        didSet {
+//            _setupUI()
+//        }
+//    }
+    public var image: UIImage?
+    public var text: NSMutableAttributedString?
+    public var font: UIFont?
+    public var tint: UIColor?
     public var customView: UIView?
     var view: UIView!
     
@@ -53,7 +40,8 @@ open class ButtonView: UIView {
         self.backgroundColor = .white
         view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        //        self.layer.borderRa
+        self.addSubview(view)
+        
         self.imageView = UIImageView()
         self.imageView.contentMode = .scaleAspectFit
         self.imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,6 +51,7 @@ open class ButtonView: UIView {
         textView.numberOfLines = 2
         textView.lineBreakMode = .byWordWrapping
         textView.textAlignment = .center
+//        textView.textColor = tint ?? .black
         self.textView.translatesAutoresizingMaskIntoConstraints = false
         self.textView.clipsToBounds = true
         
@@ -96,13 +85,24 @@ open class ButtonView: UIView {
         self.textView.attributedText = text
         self.textView.textColor = tint ?? UIColor.black
         self.textView.font = self.font ?? UIFont.systemFont(ofSize: 11)
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.click)))
-        self.imageView.setNeedsDisplay()
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.click)))
+//        self.textView.setNeedsDisplay()
+//        self.imageView.setNeedsDisplay()
+        self.setNeedsDisplay()
         self.layoutIfNeeded()
     }
     
-    @objc func click() {
-        self.delegate?.addStoryClicked()
+    public func apply() {
+        self.subviews.forEach({
+            $0.removeFromSuperview()
+        })
+        DispatchQueue.main.async {
+            self._setupUI()
+        }
     }
     
+    @objc func click() {
+        self.clicked?()
+    }
+//
 }
