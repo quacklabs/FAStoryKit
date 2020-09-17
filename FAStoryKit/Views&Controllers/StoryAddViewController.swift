@@ -132,9 +132,11 @@ public class StoryAddViewController: UIViewController {
         
         if #available(iOS 11.0, *) {
             self.composeView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+            self.composeView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         } else {
             // Fallback on earlier versions
             self.composeView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+            self.composeView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         }
         self.composeView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         self.composeView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
